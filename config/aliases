@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Global Bash #
+alias c='clear'
+alias lsa='ls -al'
+alias lla='ll -al'
+alias cd~='cd ~'
+alias cd.='cd ..'
+alias cd..='cd ../../'
+alias cd...='cd ../../../'
+alias vizsh='vim ~/.zshrc'
+alias vialias='vim ~/.aliases'
+alias sozsh='source ~/.zshrc'
+alias vihosts='sudo vim /etc/hosts'
+alias upzsh='upgrade_oh_my_zsh'
+alias hs='history | grep'
+alias mkcd='function _mkcd(){ mkdir -p "$1"; cd "$1" };_mkcd'
+alias rm:f='rm -rf'
+
+# Path
+alias www='cd ~/projects/www'
+alias dl='cd ~/Downloads'
+
+# Python
+# alias python=python3
+
+# Git Command Alises #
+alias g:i='git init'
+alias g:s='git status'
+alias g:a.='git add .'
+alias g:aa='git add -All'
+alias g:b='function _gbranch(){ git branch -$1 };_gbranch'
+alias g:c='git clone'
+alias g:cm='function _gcommit(){ git commit -m $1 };_gcommit'
+alias g:co='git checkout'
+alias g:mr='git merge'
+alias g:ps='git push -u'
+alias g:pl='git pull'
+alias g:pull='git pull origin "$(git symbolic-ref --short HEAD)"'
+alias g:push='git push origin "$(git symbolic-ref --short HEAD)"'
+
+# Homebrew Services
+alias s:ls='brew services list'
+alias s:php='function _sphp(){ brew services $1 php };_sphp'
+alias s:ngx='function _sngx(){ brew services $1 nginx };_sngx'
+alias s:mydb='function _smydb(){ brew services $1 mysql };_smydb'
+alias s:podb='function _spodb(){ brew services $1 postgresql };_spodb'
+alias s:web='function _sweb(){ s:php $1 && s:mydb $1 && s:ngx $1 };_sweb'
+
+# NodeJs NPM #
+alias npm:b='npm run build'
+alias npm:bs='npm run build-staging'
+
+# PHP Composer
+# alias com='composer'
+alias com:v='composer -V'
+alias com:i='composer init'
+alias com:in='composer install'
+alias com:ud='composer update'
+alias com:ug='composer upgrade'
+alias com:re='composer require'
+alias com:re:d='composer require --dev'
+alias com:rm='composer remove'
+alias com:rm:d='composer remove --dev'
+
+# Laravel Artisan
+alias pa='php artisan'
+alias pa:ls='pa list'
+alias pa:v='pa --version'
+
+alias web:new='new_website_project'
