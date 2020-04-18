@@ -106,8 +106,8 @@ export NVM_DIR="$HOME/.nvm"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOME/.config/.aliases
-source $HOME/.config/.functions
+source $HOME/.config/aliases
+source $HOME/.config/functions
 
 # Call welcome message
 # print_image_welcome_page

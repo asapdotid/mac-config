@@ -1,33 +1,19 @@
 #!/bin/bash
 
-DISABLE_WELCOME_MESSAGE=false
-ASAP_APP_NAME='BLACK BOX'
+local envFile=${1:-~/.config/.env}
 
-# Color Palette
-RESET='\033[0m'
-BOLD='\033[1m'
-
-## Foreground
-BLACK='\033[38;5;0m'
-RED='\033[38;5;1m'
-GREEN='\033[38;5;2m'
-YELLOW='\033[38;5;3m'
-BLUE='\033[38;5;4m'
-MAGENTA='\033[38;5;5m'
-CYAN='\033[38;5;6m'
-WHITE='\033[38;5;7m'
-
-## Background
-ON_BLACK='\033[48;5;0m'
-ON_RED='\033[48;5;1m'
-ON_GREEN='\033[48;5;2m'
-ON_YELLOW='\033[48;5;3m'
-ON_BLUE='\033[48;5;4m'
-ON_MAGENTA='\033[48;5;5m'
-ON_CYAN='\033[48;5;6m'
-ON_WHITE='\033[48;5;7m'
-
-MODULE="$(basename $0)"
+if [ -f $envFile ]; then
+  while IFS='=' read -r key temp || [ -n "$key" ]; do
+    local isComment='^[[:space:]]*#'
+    local isBlank='^[[:space:]]*$'
+    [[ $key =~ $isComment ]] && continue
+    [[ $key =~ $isBlank ]] && continue
+    value=$(eval echo "$temp")
+    eval export "$key='$value'";
+  done < $envFile
+else
+  echo "No $envFile file found" 1>&2
+fi
 
 log() {
   echo -e "${NAMI_DEBUG:+${CYAN}${MODULE} ${MAGENTA}$(date "+%T.%2N ")}${RESET}${@}" >&2
@@ -61,7 +47,7 @@ print_image_welcome_page() {
   # log ""
 }
 
-function new_website_project() {
+new_website_project() {
   if [[ ( $1 == "--help") ||  $1 == "-h" ]]
 	then
     info "Create project use Laravel or Lumen."
@@ -74,17 +60,17 @@ function new_website_project() {
   fi
 }
 
-function create_nginx_virtual_host() {
-  project_location=$HOME'/projects/www'
+create_nginx_virtual_host() {
+  project_location=${PROJECT_LOCATION}
 
-  cat > ~/.config/vhosts/$2 <<EOF
+  cat > ${NGINX_VHOST_LOCATION}/$2 <<EOF
 server {
     listen 80;
     listen [::]:80;
 
     server_name $2.asap;
-    set $base $project_location/$1;
-    root $base/public;
+    set \$base $project_location/$1;
+    root \$base/public;
 
     index index.html index.htm index.php;
 
@@ -108,19 +94,19 @@ server {
 EOF
 }
 
-function laravel_project() {
+laravel_project() {
     pwd_location=$PWD
-    project_location=$HOME/'projects/www'
+    project_location=${PROJECT_LOCATION}
     cd $project_location && laravel new $1 && cd $pwd_location
 }
 
-function lumen_project() {
+lumen_project() {
     pwd_location=$PWD
-    project_location=$HOME/'projects/www'
+    project_location=${PROJECT_LOCATION}
     cd $project_location && lumen new $1 && cd $pwd_location
 }
 
-function new_site() {
+new_site() {
   PS3="Which PHP framework do you want use? "
   select opt in Laravel Lumen
   do
@@ -139,7 +125,7 @@ function new_site() {
   done
 }
 
-function php_framework() {
+php_framework() {
   echo -n "Enter project directory name: "
   read project_dir
   echo -n "Enter project virtual host for Nginx: "
