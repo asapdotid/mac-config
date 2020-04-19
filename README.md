@@ -25,4 +25,14 @@ NGINX_VHOST_LOCATION=$HOME'/.config/vhosts'
 PROJECT_LOCATION=$HOME'/projects/www'
 ```
 
+For change Nginx vhost TLD for local use on `functions` method `create_nginx_virtual_host`:
+
+Depends on the last domain name you will use, for example local, test and others  from environment key `TLD_DOMAIN`
+
+it can change server name and append to hosts file
+
+``` bash
+server_name $2.test;
+```
+
 If any issue please contact me @asapdotid :point_left:
