@@ -49,7 +49,7 @@ print_image_welcome_page() {
 
 new_website_project() {
   if [[ ( $1 == "--help") ||  $1 == "-h" ]]
-	then
+  then
     info "Create project use Laravel or Lumen."
     info "Syntax: web:new -[h]"
     info "Follow the convention and select option which framework do you use."
@@ -61,15 +61,13 @@ new_website_project() {
 }
 
 create_nginx_virtual_host() {
-  project_location=${PROJECT_LOCATION}
-
   cat > ${NGINX_VHOST_LOCATION}/$2 <<EOF
 server {
     listen 80;
     listen [::]:80;
 
     server_name $2.${TLD_DOMAIN};
-    set \$base $project_location/$1;
+    set \$base ${PROJECT_LOCATION}/$1;
     root \$base/public;
 
     index index.html index.htm index.php;
@@ -77,9 +75,6 @@ server {
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
 
     error_page 404 /index.php;
 
@@ -98,15 +93,11 @@ EOF
 }
 
 laravel_project() {
-    pwd_location=$PWD
-    project_location=${PROJECT_LOCATION}
-    cd $project_location && laravel new $1 && cd $pwd_location
+    laravel new ${PROJECT_LOCATION}/$1
 }
 
 lumen_project() {
-    pwd_location=$PWD
-    project_location=${PROJECT_LOCATION}
-    cd $project_location && lumen new $1 && cd $pwd_location
+    lumen new ${PROJECT_LOCATION}/$1
 }
 
 new_site() {
@@ -136,15 +127,16 @@ php_framework() {
 
   if [ ! -z "$project_dir" ] && [ ! -z "$project_host" ]
   then
-    info "** Create new $1 project ${project_dir}"
-    $1_project $project_dir
-    info "** Create virtual host ${BOLD}${project_host}.asap${RESET}"
-    create_nginx_virtual_host $project_dir $project_host
-    info "** Append dns ${BOLD}${project_host}.asap${RESET} to hosts for local user"
+    info "** Create new ${1^} project ${project_dir}"
+    $1_project ${project_dir}
+    info "** Create virtual host ${BOLD}${project_host}.${TLD_DOMAIN}${RESET}"
+    create_nginx_virtual_host ${project_dir} ${project_host}
+    info "** Append dns ${BOLD}${project_host}.${TLD_DOMAIN}${RESET} to hosts for local user"
     echo "127.0.0.1   ${project_host}.${TLD_DOMAIN}" | sudo tee -a /etc/hosts >/dev/null
     # info "** Reload Nginx service"
     # nginx -s reload
-    info "Done... and you can try to access on browser with url: ${BOLD}${project_host}.asap${RESET}"
+    info "Done... and you can try to access on browser with url: ${BOLD}${project_host}.${TLD_DOMAIN}${RESET}"
+    info "Project location ${PROJECT_LOCATION}/${project_dir}"
   else
     warn "** Please check your input project diectory and vhost."
   fi
