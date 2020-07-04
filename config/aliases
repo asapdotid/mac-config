@@ -43,7 +43,7 @@ alias g:rr='git remote rm'
 alias g:rv='git remote -v'
 alias g:pl='git pull'
 alias g:pull='function _gpull(){ git pull ${1:-origin} "$(git symbolic-ref --short HEAD)" };_gpull'
-alias g:pull='function _gpush(){ git push ${1:-origin} "$(git symbolic-ref --short HEAD)" };_gpush'
+alias g:push='function _gpush(){ git push ${1:-origin} "$(git symbolic-ref --short HEAD)" };_gpush'
 alias g:t='git tag'
 alias g:tag='git_tagging'
 
