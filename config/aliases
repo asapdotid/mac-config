@@ -10,21 +10,24 @@ if [[ $OSTYPE == darwin* ]]; then
     alias cd.='cd ..'
     alias cd..='cd ../../'
     alias cd...='cd ../../../'
-    alias vizsh='vim ~/.zshrc'
-    alias vialias='vim ~/.aliases'
-    alias sozsh='source ~/.zshrc'
-    alias vihosts='sudo vim /etc/hosts'
+    alias vi:zsh='vim ~/.zshrc'
+    alias vi:alias='vim ~/.config/.aliases'
+    alias so:zsh='source ~/.zshrc'
+    alias vi:hosts='sudo vim /etc/hosts'
     alias upzsh='upgrade_oh_my_zsh'
     alias hs='history | grep'
     alias mkcd='function _mkcd(){ mkdir -p "$1"; cd "$1" };_mkcd'
     alias rm:f='rm -rf'
+    alias pj='cd $HOME/projects && ll -al'
 
     # Application
     alias slack='open -a /Applications/Slack.app'
     alias tower='open -a /Applications/Tower.app'
     alias paw='open -a /Applications/Paw.app'
     alias tplus='open -a /Applications/TablePlus.app'
-
+    alias tele='open -a /Applications/Telegram.app'
+    alias postico='open -a /Applications/Postico.app'
+    
     # Path
     alias pphp='cd $HOME/projects/php'
     alias pjs='cd $HOME/projects/js'
@@ -51,6 +54,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias g:ra='git remote add'
     alias g:rr='git remote rm'
     alias g:rv='git remote -v'
+    alias g:rn='git remote set-url'
     alias g:pl='git pull'
     alias g:pull='function _gpull(){ git pull ${1:-origin} "$(git symbolic-ref --short HEAD)" };_gpull'
     alias g:push='function _gpush(){ git push ${1:-origin} "$(git symbolic-ref --short HEAD)" };_gpush'
