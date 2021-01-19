@@ -12,6 +12,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias cd...='cd ../../../'
     alias vi:zsh='vim ~/.zshrc'
     alias vi:alias='vim ~/.config/.aliases'
+    alias sub:alias='subl ~/.config/.aliases'
     alias so:zsh='source ~/.zshrc'
     alias vi:hosts='sudo vim /etc/hosts'
     alias upzsh='upgrade_oh_my_zsh'
@@ -27,7 +28,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias tplus='open -a /Applications/TablePlus.app'
     alias tele='open -a /Applications/Telegram.app'
     alias postico='open -a /Applications/Postico.app'
-    
+
     # Path
     alias pphp='cd $HOME/projects/php'
     alias pjs='cd $HOME/projects/js'
@@ -90,6 +91,16 @@ if [[ $OSTYPE == darwin* ]]; then
     alias s:mdb='function _smydb(){ brew services $1 mysql };_smydb'
     alias s:pdb='function _spodb(){ brew services $1 postgresql };_spodb'
     alias s:web='function _sweb(){ s:php $1 && s:mydb $1 && s:ngx $1 };_sweb'
+
+    # NVM
+    alias nvm:l='nvm ls'
+    alias nvm:l:r='nvm ls-remote --lts'
+    alias nvm:v:r="nvm version-remote --lts"
+    alias nvm:in='nvm install'
+    alias nvm:in:lts='nvm install '\''lts/*'\'' --reintsall-packages-from=default --latest-npm' 
+    alias nvm:un='nvm uninstall'
+    alias nvm:u='nvm use'
+    alias nvm:d='nvm alias default'
 
     # NodeJs NPM #
     alias node:v='node -v'
