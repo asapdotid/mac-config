@@ -10,16 +10,15 @@ if [[ $OSTYPE == darwin* ]]; then
     alias cd.='cd ..'
     alias cd..='cd ../../'
     alias cd...='cd ../../../'
-    alias vi:zsh='vim ~/.zshrc'
-    alias vi:alias='vim ~/.config/.aliases'
-    alias sub:alias='subl ~/.config/.aliases'
-    alias so:zsh='source ~/.zshrc'
-    alias vi:hosts='sudo vim /etc/hosts'
+    alias vizsh='vim ~/.zshrc'
+    alias vialias='vim ~/.config/.aliases'
+    alias vienv='vim ~/.config/.env'
+    alias vihosts='sudo vim /etc/hosts'
+    alias sozsh='source ~/.zshrc'
     alias upzsh='upgrade_oh_my_zsh'
     alias hs='history | grep'
     alias mkcd='function _mkcd(){ mkdir -p "$1"; cd "$1" };_mkcd'
     alias rm:f='rm -rf'
-    alias pj='cd $HOME/projects && ll -al'
 
     # Application
     alias slack='open -a /Applications/Slack.app'
@@ -30,8 +29,10 @@ if [[ $OSTYPE == darwin* ]]; then
     alias postico='open -a /Applications/Postico.app'
 
     # Path
-    alias pphp='cd $HOME/projects/php'
-    alias pjs='cd $HOME/projects/js'
+    alias lab:config='cd $HOME/Labs/config'
+    alias lab:infra='cd $HOME/Labs/infra'
+    alias lab:apps='cd $HOME/Labs/apps'
+    alias pj='cd $HOME/projects && ll -al'
     alias dl='cd $HOME/Downloads'
 
     # Tree
@@ -97,7 +98,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias nvm:l:r='nvm ls-remote --lts'
     alias nvm:v:r="nvm version-remote --lts"
     alias nvm:in='nvm install'
-    alias nvm:in:lts='nvm install '\''lts/*'\'' --reintsall-packages-from=default --latest-npm' 
+    alias nvm:in:lts='nvm install '\''lts/*'\'' --reintsall-packages-from=default --latest-npm'
     alias nvm:un='nvm uninstall'
     alias nvm:u='nvm use'
     alias nvm:d='nvm alias default'
@@ -136,4 +137,48 @@ if [[ $OSTYPE == darwin* ]]; then
     alias pa:v='pa --version'
 
     alias web:new='new_website_project'
+
+    # Tmuxinator
+    alias mux='tmuxinator'
+    alias mux:v='tmuxinator version'
+    alias mux:s='tmuxinator start'
+    alias mux:st='tmuxinator stop'
+    alias mux:n='tmuxinator new'
+    alias mux:l='tmuxinator list'
+    alias mux:e='tmuxinator edit'
+    alias mux:c='tmuxinator copy'
+    alias mux:d='tmuxinator delete'
+    alias mux:doc='tmuxinator doctor'
+    alias mux:debug='tmuxinator debug'
+
+    # Tmux
+    alias tx='tmux'
+    alias tx:i='tmux info'
+    alias tx:a='tmux attach -t'
+    alias tx:n='tmux new -s'
+    alias tx:l='tmux list'
+    alias tx:k:t='tmux kill-session -t'
+    alias tx:k:a='tmux kill-session -a'
+    alias tx:k:ser='tmux kill-server'
+
+    # Ansible
+    alias ansi='ansible'
+    alias ansi:p:n='new_ansible'
+
+    # Terraform
+    alias tf='terraform'
+    alias tf:i='terraform init'
+    alias tf:v='terraform validate'
+    alias tf:p='terraform plan'
+    alias tf:a='terraform applay'
+    alias tf:d='terraform destroy'
+    alias tf:o='terraform output'
+    alias tf:h='terraform -help'
+
+    # Terragrunt
+    alias tg='terragrunt'
+    alias tg:o='terragrunt output'
+    alias tg:p='terragrunt plan'
+    alias tg:a='terragrunt applay'
+    alias tg:d='terragrunt destroy'
 fi
