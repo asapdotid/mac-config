@@ -211,6 +211,4 @@ if [[ $OSTYPE == darwin* ]]; then
     alias vg:p:l='vagrant plugin list'
     alias vg:p:ui='vagrant plugin uninstall'
     alias vg:p:u='vagrant plugin update'
-
-
 fi
