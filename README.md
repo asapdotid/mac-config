@@ -7,7 +7,7 @@ Clone this repository to `user configuration` directory to your home directory: 
 
 ```bash
 # Install configs
-$ git clone https://github.com/asapmac/yabai-config.git "${HOME}"/.config/asapmac
+$ git clone https://github.com/asapdotid/mac-config.git "${HOME}"/.config/asapmac
 ```
 
 Add script to load `functions` and `aliases` to ZSH or BASH config `(.zshrc or bashrc)` on the bottom.
