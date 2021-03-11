@@ -158,6 +158,9 @@ Click [here](scripts/open_iterm2.sh) to view the script
 cmd - return : /path/to/launch/terminal
 ```
 
-Refrence : [Yabai Config](https://github.com/Julian-Heng/chunkwm-yabai-config)
+Refrence :
+
+- [Yabai Config](https://github.com/Julian-Heng/chunkwm-yabai-config)
+- [Emoji Log](https://github.com/ahmadawais/Emoji-Log)
 
 If any issue please contact me [@asapdotid](mailto:asapdotid@gmail.com) :point_left:

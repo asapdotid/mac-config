@@ -62,6 +62,14 @@ if [[ $OSTYPE == darwin* ]]; then
     alias g:push='function _gpush(){ git push ${1:-origin} "$(git symbolic-ref --short HEAD)" };_gpush'
     alias g:t='git tag'
     alias g:tag='git_tagging'
+    # Git with Emoji
+    alias g:new='gnew'
+    alias g:imp='gimp'
+    alias g:fix='gfix'
+    alias g:rlz='grlz'
+    alias g:doc='gdoc'
+    alias g:tst='gtst'
+    alias g:brk='gbrk'
 
     # Git Flow
     alias gf='git flow'
