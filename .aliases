@@ -162,9 +162,10 @@ if [[ $OSTYPE == darwin* ]]; then
     alias tx:k:ser='tmux kill-server'
 
     # Ansible
-    alias ansi='ansible'
-    alias ansi:l='ansible --list-hosts all'
-    alias ansi:p:n='new_ansible'
+    alias a='ansible'
+    alias a:l='ansible --list-hosts all'
+    alias ap='ansible-playbook'
+    alias a:i='new_ansible'
 
     # Terraform
     alias tf='terraform'

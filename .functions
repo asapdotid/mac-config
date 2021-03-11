@@ -1,6 +1,6 @@
 #!/bin/bash
 
-local envFile=${1:-~/.config/.env}
+local envFile=${1:-$HOME/.config/asapmac/.env}
 
 if [ -f $envFile ]; then
   while IFS='=' read -r key temp || [ -n "$key" ]; do
