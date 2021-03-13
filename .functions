@@ -204,40 +204,101 @@ ansible_project_init () {
 
 # Git Commit, Add all and Push — in one step.
 function gcap() {
-    git add . && git commit -m "$*" && git push ${1:-origin} "$(git symbolic-ref --short HEAD)"
+    git add . && git commit -m "$1" && git push ${1:-origin} "$(git symbolic-ref --short HEAD)"
+}
+
+# Git Commit, Add all — in one step.
+function gca() {
+    git add . && git commit -m "$1"
 }
 
 # NEW.
 function gnew() {
-    gcap "📦 NEW: $@"
+    ARGS=`getArgs "$@"`
+    push=`echo "$ARGS" | getNamedArg push`
+    message=`echo "$ARGS" | getNamedArg message`
+    if [ -n "$push" ]
+    then
+        gcap "📦 NEW: $message"
+    else
+        gca "📦 NEW: $message"
+    fi
 }
 
 # IMPROVE.
 function gimp() {
-    gcap "👌 IMPROVE: $@"
+    ARGS=`getArgs "$@"`
+    push=`echo "$ARGS" | getNamedArg push`
+    message=`echo "$ARGS" | getNamedArg message`
+    if [ -n "$push" ]
+    then
+        gcap "👌 IMPROVE: $message"
+    else
+        gca "👌 IMPROVE: $message"
+    fi
 }
 
 # FIX.
 function gfix() {
-    gcap "🐛 FIX: $@"
+    ARGS=`getArgs "$@"`
+    push=`echo "$ARGS" | getNamedArg push`
+    message=`echo "$ARGS" | getNamedArg message`
+    if [ -n "$push" ]
+    then
+        gcap "🐛 FIX: $message"
+    else
+        gca "🐛 FIX: $message"
+    fi
 }
 
 # RELEASE.
 function grlz() {
-    gcap "🚀 RELEASE: $@"
+    ARGS=`getArgs "$@"`
+    push=`echo "$ARGS" | getNamedArg push`
+    message=`echo "$ARGS" | getNamedArg message`
+    if [ -n "$push" ]
+    then
+        gcap "🚀 RELEASE: $message"
+    else
+        gca "🚀 RELEASE: $message"
+    fi
 }
 
 # DOC.
 function gdoc() {
-    gcap "📖 DOC: $@"
+    ARGS=`getArgs "$@"`
+    push=`echo "$ARGS" | getNamedArg push`
+    message=`echo "$ARGS" | getNamedArg message`
+   if [ -n "$push" ]
+    then
+        gca "📖 DOC: $message"
+    else
+        gcap "📖 DOC: $message"
+    fi
 }
 
 # TEST.
 function gtst() {
-    gcap "🤖 TEST: $@"
+    ARGS=`getArgs "$@"`
+    push=`echo "$ARGS" | getNamedArg push`
+    message=`echo "$ARGS" | getNamedArg message`
+    if [ -n "$push" ]
+    then
+        gca "🤖 TEST: $message"
+    else
+        gcap "🤖 TEST: $message"
+    fi
 }
 
 # BREAKING CHANGE.
 function gbrk() {
-    gcap "‼️ BREAKING: $@"
+    ARGS=`getArgs "$@"`
+    push=`echo "$ARGS" | getNamedArg push`
+    message=`echo "$ARGS" | getNamedArg message`
+    if [ -n "$push" ]
+    then
+        gca "‼️ BREAKING: $message"
+    else
+        gcap "‼️ BREAKING: $message"
+    fi
 }
