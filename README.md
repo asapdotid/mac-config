@@ -27,6 +27,8 @@ example:
 EDITOR='vim'
 ```
 
+Now you can use aliases for your command don't forget before use it, please to reload config `source ~/.zshrc`
+
 # Yabai and skhd configs
 
 My personal yabai and skhd configs
