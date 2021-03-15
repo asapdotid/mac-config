@@ -232,4 +232,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias yd:vp="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' $1 -o ~/Videos/youtube/'%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' --prefer-ffmpeg --ignore-config --yes-playlist"
     alias yd:a="youtube-dl -f 'bestaudio[ext=m4a]' $1 -o ~/Music/youtube/'%(title)s.%(ext)s' --ignore-config --prefer-ffmpeg --extract-audio -x --audio-format mp3"
     alias yd:ap="youtube-dl -f 'bestaudio[ext=m4a]' $1 -o ~/Music/youtube/%(playlist)s/[%(playlist_index)s] - %(title)s.%(ext)s' --ignore-config --prefer-ffmpeg --extract-audio -x --audio-format mp3 --ignore-errors --yes-playlist"
+
+    # Transmission cli
+    alias tsm="transmission-remote"
 fi
