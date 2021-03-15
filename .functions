@@ -31,6 +31,10 @@ error() {
   log "${RED}ERROR${RESET} ==> ${@}"
 }
 
+input() {
+  echo -n "${GREEN}=>${RESET}${YELLOW} $1${RESET}${RED}:${RESET} "
+}
+
 print_welcome_page() {
   if [ -z "$DISABLE_WELCOME_MESSAGE" ]; then
     if [ -n "$ASAP_APP_NAME" ]; then
@@ -204,7 +208,7 @@ ansible_project_init () {
 
 # Git Commit, Add all and Push — in one step.
 function gcap() {
-    git add . && git commit -m "$1" && git push "$(git rev-parse --abbrev-ref HEAD)" "$(git symbolic-ref --short HEAD)"
+    git add . && git commit -m "$2" && git push ${1:-origin} "$(git symbolic-ref --short HEAD)"
 }
 
 # Git Commit, Add all — in one step.
@@ -214,9 +218,7 @@ function gca() {
 
 # NEW.
 function gnew() {
-    ARGS=`getArgs "$@"`
-    push=`echo "$ARGS" | getNamedArg push`
-    if [ -n "$push" ]
+    if [[ -n "$1" && $1 == "--push" ]]
     then
         input "==> Remote name"; read r_name
         if [ -z "$r_name" ];
@@ -241,9 +243,7 @@ function gnew() {
 
 # IMPROVE.
 function gimp() {
-    ARGS=`getArgs "$@"`
-    push=`echo "$ARGS" | getNamedArg push`
-    if [ -n "$push" ]
+    if [[ -n "$1" && $1 == "--push" ]]
     then
         input "==> Remote name"; read r_name
         if [ -z "$r_name" ];
@@ -268,9 +268,7 @@ function gimp() {
 
 # FIX.
 function gfix() {
-    ARGS=`getArgs "$@"`
-    push=`echo "$ARGS" | getNamedArg push`
-    if [ -n "$push" ]
+    if [[ -n "$1" && $1 == "--push" ]]
     then
         input "==> Remote name"; read r_name
         if [ -z "$r_name" ];
@@ -295,9 +293,7 @@ function gfix() {
 
 # RELEASE.
 function grls() {
-    ARGS=`getArgs "$@"`
-    push=`echo "$ARGS" | getNamedArg push`
-    if [ -n "$push" ]
+    if [[ -n "$1" && $1 == "--push" ]]
     then
         input "==> Remote name"; read r_name
         if [ -z "$r_name" ];
@@ -322,9 +318,7 @@ function grls() {
 
 # DOC.
 function gdoc() {
-    ARGS=`getArgs "$@"`
-    push=`echo "$ARGS" | getNamedArg push`
-    if [ -n "$push" ]
+    if [[ -n "$1" && $1 == "--push" ]]
     then
         input "==> Remote name"; read r_name
         if [ -z "$r_name" ];
@@ -349,9 +343,7 @@ function gdoc() {
 
 # TEST.
 function gtst() {
-    ARGS=`getArgs "$@"`
-    push=`echo "$ARGS" | getNamedArg push`
-    if [ -n "$push" ]
+    if [[ -n "$1" && $1 == "--push" ]]
     then
         input "==> Remote name"; read r_name
         if [ -z "$r_name" ];
@@ -376,9 +368,7 @@ function gtst() {
 
 # BREAKING CHANGE.
 function gbrk() {
-   ARGS=`getArgs "$@"`
-    push=`echo "$ARGS" | getNamedArg push`
-    if [ -n "$push" ]
+    if [[ -n "$1" && $1 == "--push" ]]
     then
         input "==> Remote name"; read r_name
         if [ -z "$r_name" ];
