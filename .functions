@@ -220,19 +220,19 @@ function gca() {
 function gnew() {
     if [[ -n "$1" && $1 == "--push" ]]
     then
-        input "==> Remote name"; read r_name
+        input "Remote name"; read r_name
         if [ -z "$r_name" ];
         then
             error "Please give git remote name"; return 1;
         fi
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
         fi
         git add . && git commit -m "📦 NEW: $r_commit" && git push ${r_name:-origin} "$(git symbolic-ref --short HEAD)"
     else
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
@@ -245,19 +245,19 @@ function gnew() {
 function gimp() {
     if [[ -n "$1" && $1 == "--push" ]]
     then
-        input "==> Remote name"; read r_name
+        input "Remote name"; read r_name
         if [ -z "$r_name" ];
         then
             error "Please give git remote name"; return 1;
         fi
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
         fi
         git add . && git commit -m "👌 IMPROVE: $r_commit" && git push ${r_name:-origin} "$(git symbolic-ref --short HEAD)"
     else
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
@@ -270,19 +270,19 @@ function gimp() {
 function gfix() {
     if [[ -n "$1" && $1 == "--push" ]]
     then
-        input "==> Remote name"; read r_name
+        input "Remote name"; read r_name
         if [ -z "$r_name" ];
         then
             error "Please give git remote name"; return 1;
         fi
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
         fi
         git add . && git commit -m "🐛 FIX: $r_commit" && git push ${r_name:-origin} "$(git symbolic-ref --short HEAD)"
     else
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
@@ -295,19 +295,19 @@ function gfix() {
 function grls() {
     if [[ -n "$1" && $1 == "--push" ]]
     then
-        input "==> Remote name"; read r_name
+        input "Remote name"; read r_name
         if [ -z "$r_name" ];
         then
             error "Please give git remote name"; return 1;
         fi
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
         fi
         git add . && git commit -m "🚀 RELEASE: $r_commit" && git push ${r_name:-origin} "$(git symbolic-ref --short HEAD)"
     else
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
@@ -320,19 +320,19 @@ function grls() {
 function gdoc() {
     if [[ -n "$1" && $1 == "--push" ]]
     then
-        input "==> Remote name"; read r_name
+        input "Remote name"; read r_name
         if [ -z "$r_name" ];
         then
             error "Please give git remote name"; return 1;
         fi
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
         fi
         git add . && git commit -m "📖 DOC: $r_commit" && git push ${r_name:-origin} "$(git symbolic-ref --short HEAD)"
     else
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
@@ -345,19 +345,19 @@ function gdoc() {
 function gtst() {
     if [[ -n "$1" && $1 == "--push" ]]
     then
-        input "==> Remote name"; read r_name
+        input "Remote name"; read r_name
         if [ -z "$r_name" ];
         then
             error "Please give git remote name"; return 1;
         fi
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
         fi
         git add . && git commit -m "🤖 TEST: $r_commit" && git push ${r_name:-origin} "$(git symbolic-ref --short HEAD)"
     else
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
@@ -370,19 +370,19 @@ function gtst() {
 function gbrk() {
     if [[ -n "$1" && $1 == "--push" ]]
     then
-        input "==> Remote name"; read r_name
+        input "Remote name"; read r_name
         if [ -z "$r_name" ];
         then
             error "Please give git remote name"; return 1;
         fi
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
         fi
         git add . && git commit -m "‼️ BREAKING: $r_commit" && git push ${r_name:-origin} "$(git symbolic-ref --short HEAD)"
     else
-        input "=> Commit message"; read r_commit
+        input "Commit message"; read r_commit
         if [ -z "$r_commit" ]
         then
              error "Please give git commit message"; return 1;
