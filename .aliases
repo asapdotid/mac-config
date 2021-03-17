@@ -50,6 +50,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias g:cl='git clone'
     alias g:cm='function _gcommit(){ git commit -m $1 };_gcommit'
     alias g:co='git checkout'
+    alias g:co:b='git checkout -b'
     alias g:mr='git merge'
     alias g:mrs='git merge --no-ff --no-commit'
     alias g:ps='git push -u'
@@ -82,9 +83,6 @@ if [[ $OSTYPE == darwin* ]]; then
     # Git Flow
     alias gf='git flow'
     alias gf:i='git flow init'
-    alias g:cod='git checkout develop'
-    alias g:coh='git checkout hotfix'
-    alias g:cor='git checkout release'
     alias gf:f='git flow feature'
     alias gf:h='git flow hotfix'
     alias gf:r='git flow release'
