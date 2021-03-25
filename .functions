@@ -51,6 +51,25 @@ print_image_welcome_page() {
   # log ""
 }
 
+load_env_file_config() {
+    oIFS="$IFS"; IFS=, ; set -- $1 ; IFS="$oIFS"
+    for i in "$@"; do
+        envFile=$HOME/.config/.$i.env
+        if [ -f $envFile ]; then
+            while IFS='=' read -r key temp || [ -n "$key" ]; do
+                local isComment='^[[:space:]]*#'
+                local isBlank='^[[:space:]]*$'
+                [[ $key =~ $isComment ]] && continue
+                [[ $key =~ $isBlank ]] && continue
+                value=$(eval echo "$temp")
+                eval export "$key='$value'";
+            done < $envFile
+        else
+            echo "No $envFile file found" 1>&2
+        fi
+    done
+}
+
 new_website_project() {
   if [[ ( $1 == "--help") ||  $1 == "-h" ]]
   then
