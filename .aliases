@@ -184,7 +184,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias tf:i='terraform init'
     alias tf:v='terraform validate'
     alias tf:p='terraform plan'
-    alias tf:a='terraform applay'
+    alias tf:a='terraform apply'
     alias tf:d='terraform destroy'
     alias tf:o='terraform output'
     alias tf:h='terraform -help'
@@ -193,7 +193,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias tg='terragrunt'
     alias tg:o='terragrunt output'
     alias tg:p='terragrunt plan'
-    alias tg:a='terragrunt applay'
+    alias tg:a='terragrunt apply'
     alias tg:d='terragrunt destroy'
 
     # Vagrant
