@@ -52,9 +52,8 @@ print_image_welcome_page() {
 }
 
 load_env_file_config() {
-    oIFS="$IFS"; IFS=, ; set -- $1 ; IFS="$oIFS"
     for i in "$@"; do
-        envFile=$HOME/.config/.$i.env
+        envFile=$HOME/.config/$i
         if [ -f $envFile ]; then
             while IFS='=' read -r key temp || [ -n "$key" ]; do
                 local isComment='^[[:space:]]*#'
