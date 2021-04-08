@@ -408,3 +408,30 @@ function gbrk() {
         git add . && git commit -m "‼️ BREAKING: $r_commit"
     fi
 }
+
+######### ALACRITTY GOOODNESS ############
+alias -g alacrittycolors='python3 $HOME/Library/Python/3.9//lib/python/site-packages/alacritty_colorscheme/cli.py '
+# To use run: alaFontSize 12
+function alaFontSize() {
+    cat ~/.config/alacritty/alacritty.yml | jsin --yaml --yamlout --whole "(l.font.size=Number(\"$1\")) && l; " > $HOME/.config/alacritty/alacritty.yml.tmp
+    mv $HOME/.config/alacritty/alacritty.yml.tmp $HOME/.config/alacritty/alacritty.yml
+}
+# To use run: alaOpacity 0.8
+function alaOpacity() {
+    cat ~/.config/alacritty/alacritty.yml | jsin --yaml --yamlout --whole "(l.background_opacity=Number(\"$1\")) && l; " > $HOME/.config/alacritty/alacritty.yml.tmp
+    mv $HOME/.config/alacritty/alacritty.yml.tmp $HOME/.config/alacritty/alacritty.yml
+}
+# To use run: alaColorTheme
+# Must run: sudo pip3 install alacrittycolors
+# before using
+# Also make sure jsin is installed from above or: https://github.com/bebrws/jsin
+function alaColorTheme() {
+   export ALABASE=$(python3 -m site | grep site | grep packages | head -n 1 | jsin "l.replace(/\s*\'/g, '').replace(/,/g, '')")
+   python3 $ALABASE/alacritty_colorscheme/cli.py -a ~/.config/alacritty/colors/$(ls  ~/.config/alacritty/colors/ | fzf --preview "python3 $ALABASE/alacritty_colorscheme/cli.py -a ~/.config/alacritty/colors/{} && htop")
+}
+function alaResetDark()  {
+  cp ~/.config/alacritty/alacritty.yml.dark ~/.config/alacritty/alacritty.yml
+}
+function alaResetLight()  {
+  cp ~/.config/alacritty/alacritty.yml.light  ~/.config/alacritty/alacritty.yml
+}
