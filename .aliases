@@ -233,4 +233,10 @@ if [[ $OSTYPE == darwin* ]]; then
 
     # Transmission cli
     alias tsm="transmission-remote"
+
+    # VS Codium
+    alias code="codium"
+
+    # Noevim
+    alias nv="nvim"
 fi
