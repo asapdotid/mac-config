@@ -10,10 +10,10 @@ if [[ $OSTYPE == darwin* ]]; then
     alias cd.='cd ..'
     alias cd..='cd ../../'
     alias cd...='cd ../../../'
-    alias vizsh='vim ~/.zshrc'
-    alias vialias='vim ~/.config/.aliases'
-    alias vienv='vim ~/.config/.env'
-    alias vihosts='sudo vim /etc/hosts'
+    alias vizsh='nvim ~/.zshrc'
+    alias vialias='nvim ~/.config/.aliases'
+    alias vienv='nvim ~/.config/.env'
+    alias vihosts='sudo nvim /etc/hosts'
     alias sozsh='source ~/.zshrc'
     alias upzsh='upgrade_oh_my_zsh'
     alias hs='history | grep'
@@ -42,6 +42,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias g='git'
     alias g:i='git init'
     alias g:s='git status'
+    alias g:a='git add'
     alias g:a.='git add .'
     alias g:aa='git add -All'
     alias g:b='function _gbranch(){ git branch -$1 };_gbranch'
@@ -240,4 +241,12 @@ if [[ $OSTYPE == darwin* ]]; then
 
     # Noevim
     alias nv="nvim"
+
+    # Docker
+    alias dk='docker'
+    alias dkm='docker-machine'
+    alias dkm:c='docker-machine create -d virtualbox'
+    alias dkm:e='function _dkme(){ eval $(docker-machine env '"$1"') };_dkme'
+    alias dkc='docker-compose'
+
 fi

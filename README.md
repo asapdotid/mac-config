@@ -13,8 +13,8 @@ $ git clone https://github.com/asapdotid/mac-config.git "${HOME}"/.config/asapma
 Add script to load `functions` and `aliases` to ZSH or BASH config `(.zshrc or bashrc)` on the bottom.
 
 ```bash
-source $HOME/.config/asapmac/aliases
-source $HOME/.config/asapmac/functions
+source $HOME/.config/asapmac/.aliases
+source $HOME/.config/asapmac/.functions
 ```
 
 ## Note:
@@ -25,6 +25,12 @@ example:
 
 ```bash
 EDITOR='vim'
+```
+
+or
+
+```bash
+EDITOR='nvim'
 ```
 
 Now you can use aliases for your command don't forget before use it, please to reload config `source ~/.zshrc`
@@ -162,7 +168,7 @@ cmd - return : /path/to/launch/terminal
 
 Refrence :
 
-- [Yabai Config](https://github.com/Julian-Heng/chunkwm-yabai-config)
-- [Emoji Log](https://github.com/ahmadawais/Emoji-Log)
+-   [Yabai Config](https://github.com/Julian-Heng/chunkwm-yabai-config)
+-   [Emoji Log](https://github.com/ahmadawais/Emoji-Log)
 
 If any issue please contact me [@asapdotid](mailto:asapdotid@gmail.com) :point_left:
