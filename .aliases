@@ -245,10 +245,26 @@ if [[ $OSTYPE == darwin* ]]; then
     alias nv="nvim"
 
     # Docker
-    alias dk='docker'
-    alias dkm='docker-machine'
-    alias dkm:c='docker-machine create -d virtualbox'
-    alias dkm:e='function _dkme(){ eval $(docker-machine env '"$1"') };_dkme'
-    alias dkc='docker-compose'
+    # Must be run first because images are attached to containers
+    alias dc='docker'
+    alias dc:i='docker info'
+    alias dc:rc:a='docker rm -f $(docker ps -a -q)'
+    # Delete every Docker image
+    alias dc:ri:a='docker rmi -f $(docker images -q)'
+    alias dc:v='docker volume'
+    alias dc:s='docker system'
+    alias dc:n='docker network'
+    alias dc:c='docker container'
+    alias dc:l='docker ps'
+    alias dc:la='docker ps -a'
+    # Docker Compose
+    alias dcc='docker-compose'
+    alias dcc:v='docker-compose --version'
+    alias dcc:set='function _doccomp(){ docker-compose $1 };_doccomp'
+    alias dcc:b='docker-compose up -d --build -f'
+    # Docker Machine
+    alias dcm='docker-machine'
+    alias dcm:c='docker-machine create -d virtualbox'
+    alias dcm:e='function _dkme(){ eval $(docker-machine env '"$1"') };_dkme'
 
 fi
