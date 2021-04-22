@@ -178,8 +178,10 @@ if [[ $OSTYPE == darwin* ]]; then
     # Ansible
     alias a='ansible'
     alias a:l='ansible --list-hosts all'
-    alias ap='ansible-playbook'
     alias a:i='new_ansible'
+    alias ap='ansible-playbook'
+    alias ag='ansible-galaxy'
+    alias av='ansible-vault'
 
     # Terraform
     alias tf='terraform'
