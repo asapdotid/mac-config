@@ -265,6 +265,7 @@ if [[ $OSTYPE == darwin* ]]; then
     # Docker Machine
     alias dcm='docker-machine'
     alias dcm:c='docker-machine create -d virtualbox'
-    alias dcm:e='function _dkme(){ eval $(docker-machine env '"$1"') };_dkme'
+    alias dcm:e='function _dcme(){ eval $(docker-machine env '"$1"') };_dcme'
+    alias dcm:n='function _dcmn(){ docker-machine rm '"$1"' && docker-machine create -d virtualbox '"$1"' && eval $(docker-machine env '"$1"') }_dcmn'
 
 fi
