@@ -260,7 +260,8 @@ if [[ $OSTYPE == darwin* ]]; then
     # Docker Compose
     alias dcc='docker-compose'
     alias dcc:v='docker-compose --version'
-    alias dcc:set='function _doccomp(){ docker-compose $1 };_doccomp'
+    alias dcc:u='docker-compose up -d'
+    alias dcc:d='docker-compose down -v'
     alias dcc:b='docker-compose up -d --build -f'
     # Docker Machine
     alias dcm='docker-machine'
