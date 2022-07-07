@@ -169,6 +169,13 @@ git_tagging() {
   git push origin "$(git symbolic-ref --short HEAD)" $1
 }
 
+git_delete_all_tags() {
+  git tag -d $(git tag -l)
+  git fetch
+  git push ${1:-origin} --delete $(git tag -l)
+  git tag -d $(git tag -l)
+}
+
 new_ansible() {
   info "Ansible initial project:"
   info "1. Staging"
@@ -435,4 +442,31 @@ function alaResetDark()  {
 }
 function alaResetLight()  {
   cp ~/.config/alacritty/alacritty.yml.light  ~/.config/alacritty/alacritty.yml
+}
+
+# Docker CLeanup
+function dc_cleanup() {
+    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+    docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+}
+
+# Spotify-tui & spotifyd-fpull
+function launchspt() {
+    if [[ ! $(pgrep "spotifyd") ]]
+    then
+        spotifyd
+    fi
+
+    spt
+}
+
+# Exa
+function exa_tree() {
+    _level=${1:-1}
+    exa -lhmB --git --icons --tree --level=$_level
+}
+
+function exa_tree_dot() {
+    _level=${1:-1}
+    exa -lahmB --git --icons --tree --level=$_level
 }

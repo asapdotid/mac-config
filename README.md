@@ -1,7 +1,11 @@
-# Custom config for support bash or zsh :computer:
+# Custom config for support bash or zsh 💻
 
 1. Aliasas
 1. Function
+
+## Requirements
+
+-   Exa (`brew install exa`)
 
 Clone this repository to `user configuration` directory to your home directory: `$HOME/.config`
 
